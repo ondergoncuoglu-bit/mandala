@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jungiyen Atlas — Çember Harita</title>
+  <base href="/mandala/">
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -24,27 +25,20 @@
   <main class="container atlas">
     <div class="wheel">
       <div class="core">SELF</div>
-
       <a class="node" style="--i:0"  href="content/bolum-1.html" data-tip="Persona & Maskeler">Persona</a>
       <a class="node" style="--i:1"  href="content/bolum-1.html#anima" data-tip="Anima/Animus">Anima</a>
-      <a class="node" style="--i:2"  href="content/bolum-2.html" data-tip="Gölgeyle Karşılaşma">Gölge</a>
+      <a class="node" style="--i:2"  href="content/bolum-2.html#golge" data-tip="Gölgeyle Karşılaşma">Gölge</a>
       <a class="node" style="--i:3"  href="content/bolum-2.html#inis" data-tip="Kahramanın İnişi">Kahraman</a>
       <a class="node" style="--i:4"  href="content/bolum-3.html" data-tip="Merkeze Dönüş">Mandala</a>
       <a class="node" style="--i:5"  href="content/sembol-dizini.html" data-tip="Semboller & Motifler">Semboller</a>
       <a class="node" style="--i:6"  href="content/zaman-cizelgesi.html" data-tip="Yıllara Göre Yol">Zaman</a>
       <a class="node" style="--i:7"  href="assets/pdfs/ruya-atlasi.pdf" target="_blank" data-tip="Tüm Metin (PDF)">PDF</a>
     </div>
-
-    <p class="atlas-note">
-      Çemberdeki düğümler, 16 yıllık yolculuğun ana eşiklerine gider. İsimler gizlidir: <strong>S…</strong>, <strong>D…</strong>, <strong>Eşim Emine</strong>.
-    </p>
+    <p class="atlas-note">Çemberdeki düğümler, 16 yıllık yolculuğun ana eşiklerine gider. İsimler gizlidir: <strong>S…</strong>, <strong>D…</strong>, <strong>Eşim Emine</strong>.</p>
   </main>
 
-  <script src="assets/js/app.js"></script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
-    }
+    if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{});}
   </script>
 </body>
 </html>
