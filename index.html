@@ -2,9 +2,12 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="16 Yıllık Jungyen Bireyleşme Yolculuğu - Rüya Atlası" />
   <meta name="author" content="Önder" />
+
+  <!-- !!! ÖNEMLİ: GitHub Pages alt dizin düzeltmesi -->
+  <base href="/mandala/">
 
   <!-- Icons / PWA -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
@@ -19,107 +22,62 @@
   <title>Rüya Atlası - Jungyen Bireyleşme Yolculuğu</title>
 
   <style>
-    /* VARIABLES */
-    :root{
-      --color-dark-navy:#1a1f3a; --color-deep-blue:#2c3654; --color-gold:#d4af37;
-      --color-light-gold:#f4e4c1; --color-cream:#faf6f0; --color-text:#e8e2d5; --color-text-dark:#3a3a3a;
-      --font-serif:'Georgia','Times New Roman',serif; --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-    }
+    :root{--color-dark-navy:#1a1f3a;--color-deep-blue:#2c3654;--color-gold:#d4af37;--color-light-gold:#f4e4c1;--color-cream:#faf6f0;--color-text:#e8e2d5;--color-text-dark:#3a3a3a;--font-serif:'Georgia','Times New Roman',serif;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
     *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font-serif);line-height:1.6;color:var(--color-text);background:linear-gradient(135deg,var(--color-dark-navy) 0%,var(--color-deep-blue) 100%);min-height:100vh;overflow-x:hidden}
+    h1,h2,h3{font-weight:300;letter-spacing:.02em}
+    h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--color-gold);text-align:center;margin-bottom:1rem}
+    h2{font-size:clamp(1.5rem,3vw,2.5rem);color:var(--color-light-gold);margin-bottom:1.5rem}
+    p{font-size:1.1rem;line-height:1.8;margin-bottom:1.5rem}
 
-    /* TYPO / BASE */
-    body{
-      font-family:var(--font-serif); line-height:1.6; color:var(--color-text);
-      background:linear-gradient(135deg,var(--color-dark-navy) 0%,var(--color-deep-blue) 100%);
-      min-height:100vh; overflow-x:hidden;
-    }
-    h1,h2,h3{font-family:var(--font-serif); font-weight:300; letter-spacing:.02em}
-    h1{font-size:clamp(2rem,5vw,3.5rem); color:var(--color-gold); text-align:center; margin-bottom:1rem}
-    h2{font-size:clamp(1.5rem,3vw,2.5rem); color:var(--color-light-gold); margin-bottom:1.5rem}
-    p{font-size:1.1rem; line-height:1.8; margin-bottom:1.5rem}
-
-    /* NAV */
-    nav{
-      position:fixed; top:0; width:100%; background:rgba(26,31,58,.95); backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--color-gold); z-index:1000; padding:1rem 0;
-    }
-    .nav-container{max-width:1200px; margin:0 auto; padding:0 2rem; display:flex; justify-content:space-between; align-items:center}
-    .nav-logo{font-size:1.5rem; color:var(--color-gold); text-decoration:none; display:flex; align-items:center; gap:.5rem}
-    .nav-menu{display:flex; list-style:none; gap:2rem}
-    .nav-menu a{color:var(--color-text); text-decoration:none; transition:color .3s; font-size:1rem}
+    nav{position:fixed;top:0;width:100%;background:rgba(26,31,58,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-gold);z-index:1000;padding:1rem 0}
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-size:1.5rem;color:var(--color-gold);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+    .nav-menu{display:flex;list-style:none;gap:2rem}
+    .nav-menu a{color:var(--color-text);text-decoration:none;transition:color .3s;font-size:1rem}
     .nav-menu a:hover{color:var(--color-gold)}
-    .menu-toggle{display:none; flex-direction:column; cursor:pointer}
-    .menu-toggle span{width:25px; height:2px; background:var(--color-gold); margin:3px 0; transition:.3s}
+    .menu-toggle{display:none;flex-direction:column;cursor:pointer}
+    .menu-toggle span{width:25px;height:2px;background:var(--color-gold);margin:3px 0}
 
-    /* LAYOUT */
-    .container{max-width:1200px; margin:0 auto; padding:6rem 2rem 2rem}
+    .container{max-width:1200px;margin:0 auto;padding:6rem 2rem 2rem}
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .subtitle{font-size:1.3rem;color:var(--color-light-gold);text-align:center;margin-bottom:2rem;font-style:italic}
 
-    /* HERO */
-    .hero{min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative}
-    .subtitle{font-size:1.3rem; color:var(--color-light-gold); text-align:center; margin-bottom:2rem; font-style:italic}
+    .mandala-container{position:relative;width:400px;height:400px;margin:3rem auto}
+    .mandala{position:absolute;inset:0}
+    .circle-outer,.circle-middle,.circle-inner{position:absolute;border-radius:50%;animation:rotate 60s linear infinite;border:2px solid var(--color-gold)}
+    .circle-outer{inset:0;border-width:3px}
+    .circle-middle{inset:15%;border-color:var(--color-light-gold);animation:rotrev 45s linear infinite}
+    .circle-inner{inset:30%;animation-duration:30s}
+    .circle-center{position:absolute;inset:42.5%;border-radius:50%;background:radial-gradient(circle,var(--color-gold) 0%,transparent 70%);animation:pulse 3s ease-in-out infinite}
+    @keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes rotrev{from{transform:rotate(360deg)}to{transform:rotate(0)}}
+    @keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
 
-    /* MANDALA */
-    .mandala-container{position:relative; width:400px; height:400px; margin:3rem auto}
-    .mandala{position:absolute; inset:0}
-    .circle-outer,.circle-middle,.circle-inner{
-      position:absolute; border-radius:50%;
-      animation:rotate 60s linear infinite;
-      border:2px solid var(--color-gold);
-    }
-    .circle-outer{inset:0; border-width:3px}
-    .circle-middle{inset:15%; border-color:var(--color-light-gold); animation:rotate-rev 45s linear infinite}
-    .circle-inner{inset:30%; border-color:var(--color-gold); animation-duration:30s}
-    .circle-center{
-      position:absolute; inset:42.5%; border-radius:50%;
-      background:radial-gradient(circle,var(--color-gold) 0%, transparent 70%);
-      animation:pulse 3s ease-in-out infinite;
-    }
-    @keyframes rotate{from{transform:rotate(0)} to{transform:rotate(360deg)}}
-    @keyframes rotate-rev{from{transform:rotate(360deg)} to{transform:rotate(0)}}
-    @keyframes pulse{0%,100%{opacity:.6; transform:scale(1)} 50%{opacity:1; transform:scale(1.2)}}
+    .content-section{background:rgba(250,246,240,.05);border-radius:20px;padding:3rem;margin:3rem 0;border:1px solid rgba(212,175,55,.2)}
 
-    /* SECTIONS */
-    .content-section{background:rgba(250,246,240,.05); border-radius:20px; padding:3rem; margin:3rem 0; border:1px solid rgba(212,175,55,.2)}
-
-    /* CHAPTER CARDS */
-    .chapters-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; margin:3rem 0}
-    .chapter-card{
-      background:rgba(44,54,84,.5); border:1px solid var(--color-gold); border-radius:15px; padding:2rem;
-      transition:all .3s ease; cursor:pointer; position:relative; overflow:hidden;
-    }
-    .chapter-card::before{
-      content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-      background:radial-gradient(circle, rgba(212,175,55,.1) 0%, transparent 70%); opacity:0; transition:opacity .3s
-    }
+    .chapters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}
+    .chapter-card{background:rgba(44,54,84,.5);border:1px solid var(--color-gold);border-radius:15px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;text-decoration:none;color:inherit}
+    .chapter-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(212,175,55,.1),transparent 70%);opacity:0;transition:opacity .3s}
     .chapter-card:hover::before{opacity:1}
-    .chapter-card:hover{transform:translateY(-5px); box-shadow:0 10px 30px rgba(212,175,55,.2)}
-    .chapter-number{font-size:.9rem; color:var(--color-gold); margin-bottom:.5rem}
-    .chapter-title{font-size:1.5rem; color:var(--color-light-gold); margin-bottom:1rem}
-    .chapter-excerpt{color:var(--color-text); opacity:.9}
+    .chapter-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,.2)}
+    .chapter-number{font-size:.9rem;color:var(--color-gold);margin-bottom:.5rem}
+    .chapter-title{font-size:1.5rem;color:var(--color-light-gold);margin-bottom:1rem}
+    .chapter-excerpt{opacity:.9}
 
-    /* DOWNLOAD */
-    .download-section{text-align:center; padding:3rem 0}
-    .download-buttons{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap}
-    .download-btn{
-      display:inline-flex; align-items:center; gap:.5rem; padding:1rem 2rem;
-      background:linear-gradient(135deg, var(--color-gold) 0%, var(--color-light-gold) 100%);
-      color:var(--color-dark-navy); text-decoration:none; border-radius:50px; font-weight:600; transition:all .3s
-    }
-    .download-btn:hover{transform:translateY(-3px); box-shadow:0 10px 20px rgba(212,175,55,.3)}
+    .download-section{text-align:center;padding:3rem 0}
+    .download-buttons{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+    .download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;background:linear-gradient(135deg,var(--color-gold),var(--color-light-gold));color:var(--color-dark-navy);text-decoration:none;border-radius:50px;font-weight:600;transition:all .3s}
+    .download-btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(212,175,55,.3)}
 
-    /* FOOTER */
-    footer{text-align:center; padding:3rem 0; border-top:1px solid rgba(212,175,55,.2); margin-top:5rem}
-    .footer-text{color:var(--color-text); opacity:.7}
+    footer{text-align:center;padding:3rem 0;border-top:1px solid rgba(212,175,55,.2);margin-top:5rem}
+    .footer-text{opacity:.7}
 
-    /* RESPONSIVE */
     @media (max-width:768px){
-      .nav-menu{
-        position:fixed; left:-100%; top:70px; flex-direction:column;
-        background:rgba(26,31,58,.98); width:100%; text-align:center; transition:.3s; padding:2rem 0
-      }
+      .nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background:rgba(26,31,58,.98);width:100%;text-align:center;transition:.3s;padding:2rem 0}
       .nav-menu.active{left:0}
       .menu-toggle{display:flex}
-      .mandala-container{width:300px; height:300px}
+      .mandala-container{width:300px;height:300px}
       .content-section{padding:2rem 1.5rem}
     }
   </style>
@@ -128,7 +86,7 @@
   <!-- NAVIGATION -->
   <nav>
     <div class="nav-container">
-      <a href="index.html" class="nav-logo"><span style="font-size:1.8rem">☉</span>Rüya Atlası</a>
+      <a class="nav-logo" href="index.html"><span style="font-size:1.8rem">☉</span>Rüya Atlası</a>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#ana-sayfa">Ana Sayfa</a></li>
         <li><a href="#bolumler">Bölümler</a></li>
@@ -138,9 +96,7 @@
         <li><a href="#pdf">PDF</a></li>
         <li><a href="#docx">DOCX</a></li>
       </ul>
-      <div class="menu-toggle" id="menuToggle">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
   </nav>
 
@@ -150,7 +106,6 @@
       <h1>Rüya Atlası</h1>
       <p class="subtitle">16 Yıllık Jungyen Bireyleşme Yolculuğu</p>
 
-      <!-- MANDALA -->
       <div class="mandala-container">
         <div class="mandala">
           <div class="circle-outer"></div>
@@ -162,7 +117,7 @@
 
       <div class="content-section">
         <p>"Kim içe bakarsa uyanır." — Carl Gustav Jung</p>
-        <p>Bu kitap, 2009'dan 2025'e uzanan 16 yıllık bir içsel yolculuğun kaydıdır. 190 rüya, 7 aktif imgelem seansı ve sayısız eşzamanlılık üzerinden bireyleşme süreçleri takip edilir.</p>
+        <p>Bu kitap, 2009–2025 arası 16 yıllık bir içsel yolculuğun kaydıdır. 190 rüya, 7 aktif imgelem seansı ve sayısız eşzamanlılık üzerinden bireyleşme izlenir.</p>
       </div>
     </div>
   </section>
@@ -174,38 +129,23 @@
       <a class="chapter-card" href="content/bolum-1.html">
         <div class="chapter-number">Bölüm I</div>
         <h3 class="chapter-title">Persona ve Maskeler</h3>
-        <p class="chapter-excerpt">2009–2010: Toplumsal rollerin inşası, ilk gölge temasları…</p>
+        <p class="chapter-excerpt">2009–2010: Toplumsal rollerin inşası, ilk gölge teması…</p>
       </a>
-
       <a class="chapter-card" href="content/bolum-2.html">
         <div class="chapter-number">Bölüm II</div>
         <h3 class="chapter-title">Karanlık Gecenin Ruhu</h3>
-        <p class="chapter-excerpt">2011–2015: Gölgenin yoğunlaşması, iniş rüyaları, eşikler…</p>
+        <p class="chapter-excerpt">2011–2015: Gölge yoğunlaşır, iniş rüyaları, eşikler…</p>
       </a>
-
       <a class="chapter-card" href="content/bolum-3.html">
         <div class="chapter-number">Bölüm III</div>
         <h3 class="chapter-title">Anima ile Dans</h3>
         <p class="chapter-excerpt">2016–2020: İçsel dişille buluşma, yaratıcı enerji, lucid rüyalar…</p>
       </a>
-
       <a class="chapter-card" href="assets/pdfs/ruya-atlasi.pdf" target="_blank">
         <div class="chapter-number">Ek</div>
         <h3 class="chapter-title">Semboller Sözlüğü (PDF)</h3>
-        <p class="chapter-excerpt">Jungyen semboller ve kişisel yankıları.</p>
+        <p class="chapter-excerpt">Jungyen semboller ve kişisel yankılar.</p>
       </a>
-    </div>
-  </section>
-
-  <!-- SAMPLE CONTENT -->
-  <section class="container">
-    <div class="content-section">
-      <h2>Örnek Bölüm: Sallanan Kelebek</h2>
-      <p class="chapter-number">Rüya-125 / 21 Kasım 2019</p>
-      <p>Rehber öğretmen arkadaşım S. ile bir evdeyiz. Gece oluyor, kapı açık kalmış. Gölge (siyah bereli silüet) beliriyor. Bu lucid rüyada farkındalıkla, “Hı hı” sesiyle tehdidi küçültüp etkisizleştiriyorum.</p>
-      <p style="margin-top:2rem;padding:1.5rem;background:rgba(212,175,55,.1);border-left:3px solid var(--color-gold);font-style:italic">
-        <strong>Jungyen Analiz:</strong> Kelebek (psyche/ruh) — ipe bağlanmış hassas bağlantı. Gölgeyle bilinçli temas savunma örgütlenmesinde sıçrama yaratır.
-      </p>
     </div>
   </section>
 
@@ -219,32 +159,21 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <p class="footer-text">© 2025 Rüya Atlası — Jungyen Bireyleşme Yolculuğu</p>
-    </div>
+    <div class="container"><p class="footer-text">© 2025 Rüya Atlası — Jungyen Bireyleşme Yolculuğu <!-- build v5 --></p></div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    // Mobil menü
     const menuToggle=document.getElementById('menuToggle');
     const navMenu=document.getElementById('navMenu');
-    if(menuToggle&&navMenu){menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'));}
-
-    // Smooth scroll
+    if(menuToggle&&navMenu){menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'))}
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
         const id=a.getAttribute('href'); if(id&&id.length>1){const t=document.querySelector(id);
           if(t){e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); navMenu&&navMenu.classList.remove('active');}}
       });
     });
-
-    // Service Worker (PWA)
-    if('serviceWorker' in navigator){
-      navigator.serviceWorker.register('./service-worker.js').catch(console.warn);
-    }
+    if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{});}
   </script>
 </body>
 </html>
