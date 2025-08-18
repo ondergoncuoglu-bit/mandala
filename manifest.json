@@ -2,7 +2,7 @@
   "name": "Rüya Atlası - Jungyen Bireyleşme Yolculuğu",
   "short_name": "Rüya Atlası",
   "description": "16 yıllık içsel yolculuğun dijital kitabı",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#1a1f3a",
   "theme_color": "#d4af37",
