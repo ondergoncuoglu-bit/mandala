@@ -72,3 +72,62 @@ h2 {
     color: var(--color-light-gold);
     margin: 2rem 0 1rem;
 }
+/* === ATLAS ÇEMBER === */
+.atlas .wheel{
+  --size: 520px;
+  width: var(--size); height: var(--size);
+  margin: 40px auto; position: relative;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(212,175,55,.18), transparent 60%),
+    radial-gradient(closest-side, rgba(255,255,255,.06), transparent 65%),
+    #1a1f3a;
+  border: 2px solid rgba(212,175,55,.45);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35) inset, 0 10px 30px rgba(0,0,0,.25);
+}
+.atlas .core{
+  position:absolute; inset:50% auto auto 50%;
+  transform:translate(-50%,-50%);
+  width:120px;height:120px;border-radius:50%;
+  display:grid;place-items:center;
+  background: radial-gradient(circle at 30% 30%, #f4e4c1, #d4af37);
+  color:#1a1f3a; font-weight:800; letter-spacing:1px;
+  box-shadow: 0 0 0 6px rgba(255,255,255,.08), 0 12px 30px rgba(0,0,0,.35);
+}
+.atlas .node{
+  --i:0;
+  position:absolute; left:50%; top:50%;
+  transform:
+    rotate(calc(var(--i) * 45deg))
+    translate(calc(var(--size)/2.5))
+    rotate(calc(var(--i) * -45deg));
+  transform-origin: center;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:110px;height:42px;border-radius:12px;
+  color:#d4af37; background:rgba(255,255,255,.06);
+  border:1px solid rgba(212,175,55,.35);
+  text-decoration:none; font-weight:600; backdrop-filter:blur(4px);
+}
+.atlas .node:hover{ background:rgba(255,255,255,.12) }
+.atlas .node::after{
+  content: attr(data-tip);
+  position:absolute; top:-42px; left:50%; transform:translateX(-50%);
+  background:rgba(0,0,0,.6); color:#f4e4c1;
+  font-size:.85rem; padding:6px 8px; border-radius:8px;
+  border:1px solid rgba(255,255,255,.2); opacity:0; pointer-events:none;
+  transition:.15s; white-space:nowrap;
+}
+.atlas .node[data-show="1"]::after{ opacity:1 }
+
+/* Kartlar (dizin sayfası) */
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(212,175,55,.25);border-radius:16px;padding:18px}
+.card h3{margin:.2rem 0  .4rem}
+.card a{display:inline-block;margin-top:.6rem;color:#d4af37}
+
+/* Timeline */
+.timeline{display:grid;gap:14px}
+.t-item{display:grid;grid-template-columns:90px 1fr;gap:16px;align-items:start;
+  background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:14px}
+.t-year{display:inline-block;min-width:80px;text-align:center;color:#1a1f3a;background:#d4af37;border-radius:999px;padding:6px 10px;font-weight:700}
+.atlas-note{opacity:.85;text-align:center;margin-top:8px}
