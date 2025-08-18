@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sembol Dizini</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Sembol Dizini</h1>
+    <nav><a href="../index.html">← Anasayfa</a> · <a href="../atlas.html">Atlas</a></nav>
+  </header>
+
+  <main class="container page">
+    <div class="tags">
+      <button data-tag="su">Su</button>
+      <button data-tag="yilan">Yılan</button>
+      <button data-tag="kapı">Kapı/Eşik</button>
+      <button data-tag="mandala">Mandala</button>
+      <button data-tag="ates">Ateş</button>
+    </div>
+
+    <section class="cards" id="symbolList">
+      <!-- Kart örnekleri -->
+      <article class="card" data-tags="su mandala">
+        <h3>Merkez Çeşmesi</h3>
+        <p>Su sesi + dairesel meydan. Sakinleşme ve merkezlenme.</p>
+        <a href="bolum-3.html">Bölüm 3</a>
+      </article>
+      <article class="card" data-tags="yilan kapı">
+        <h3>Eşik Bekçisi</h3>
+        <p>Yılan motifi kapı önünde belirir; değişim talebi.</p>
+        <a href="bolum-2.html#golge">Bölüm 2</a>
+      </article>
+      <article class="card" data-tags="ates mandala">
+        <h3>Vitray Çember</h3>
+        <p>Işıklı çember; ateş renginde yansıma.</p>
+        <a href="bolum-3.html">Bölüm 3</a>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // Basit filtre
+    const list = document.getElementById('symbolList');
+    document.querySelectorAll('.tags button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const tag = btn.dataset.tag;
+        list.querySelectorAll('.card').forEach(c=>{
+          c.style.display = c.dataset.tags.includes(tag) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
