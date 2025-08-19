@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="/mandala/">
+  <title>Aktif İmgelem • Rüya Atlası</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{border:1px solid rgba(212,175,55,.25);border-radius:16px;background:rgba(250,246,240,.04);padding:12px}
+    .thumb{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid rgba(212,175,55,.15);cursor:pointer}
+    .meta{opacity:.75;margin:.3rem 0 .6rem}
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;place-items:center;z-index:9999}
+    .lb img{max-width:min(92vw,1200px);max-height:90vh;border-radius:12px;border:1px solid rgba(212,175,55,.3)}
+  </style>
+</head>
+<body>
+  <nav><div class="nav-container">
+    <a class="nav-logo" href="index.html">☉ Rüya Atlası</a>
+    <ul class="nav-menu"><li><a href="atlas.html">Atlas</a></li><li><a href="content/ruyalar.html">Rüyalar</a></li></ul>
+  </div></nav>
+
+  <main class="container" style="padding-top:90px">
+    <h1>Aktif İmgelem Galerisi</h1>
+    <p class="subtitle">Çember/mandala serileri ve oturum notları.</p>
+    <div id="gal" class="grid" aria-live="polite"></div>
+  </main>
+
+  <div id="lb" class="lb"><img alt=""></div>
+
+  <script>
+    const lb=document.getElementById('lb'); lb.addEventListener('click',()=>lb.style.display='none');
+    fetch('assets/data/imagination.json?v=6').then(r=>r.json()).then(list=>{
+      const g=document.getElementById('gal');
+      list.forEach(x=>{
+        const el=document.createElement('article'); el.className='card'; el.id=x.id;
+        el.innerHTML=`
+          <img class="thumb" src="${x.thumb||x.src}" alt="${x.title}" data-full="${x.src}">
+          <h3>${x.title}</h3>
+          <div class="meta">${x.date}${x.series?` • ${x.series}`:''}</div>
+          ${x.note?`<p>${x.note}</p>`:''}
+        `;
+        g.appendChild(el);
+      });
+      g.querySelectorAll('.thumb').forEach(i=>i.addEventListener('click',()=>{lb.querySelector('img').src=i.dataset.full;lb.style.display='grid'}));
+    });
+  </script>
+</body>
+</html>
