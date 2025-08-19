@@ -1,75 +1,77 @@
-/* RÜYA ATLASI SW v5 - GitHub Pages alt dizin uyumlu */
-const CACHE_VERSION = 'v5';
-const STATIC_CACHE = `ruya-static-${CACHE_VERSION}`;
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './assets/css/style.css',
-  './content/bolum-1.html',
-  './content/bolum-2.html',
-  './content/bolum-3.html',
-  './content/sembol-dizini.html',
-  './content/zaman-cizelgesi.html',
-  './offline.html'
+/* Rüya Atlası SW – tek tanım, tek kayıt */
+const SW_VERSION = 'v9';                // <<< sadece burayı artırırsın
+const CACHE_NAME = `ruya-atlasi-${SW_VERSION}`;
+const CORE_ASSETS = [
+  '/',               // GitHub Pages root scope için
+  '/mandala/',       // repo adı (senin yayındaki alt yol)
+  '/mandala/index.html',
+  '/mandala/atlas.html',
+  '/mandala/content/sembol-dizini.html',
+  '/mandala/content/zaman-cizelgesi.html',
+  '/mandala/assets/css/style.css',
+  '/mandala/manifest.json',
+  '/mandala/offline.html',
+  '/mandala/assets/data/dreams.json',
+  '/mandala/assets/data/imagination.json'
 ];
 
-self.addEventListener('install', e => {
-  e.waitUntil(caches.open(STATIC_CACHE).then(c => c.addAll(ASSETS)));
+// Install: çekirdek dosyaları önbelleğe al
+self.addEventListener('install', (e) => {
   self.skipWaiting();
-});
-
-self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k.startsWith('ruya-static-') && k !== STATIC_CACHE).map(k => caches.delete(k)))
-    )
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
   );
-  self.clients.claim();
 });
 
-self.addEventListener('fetch', e => {
+// Activate: eski cache’leri temizle
+self.addEventListener('activate', (e) => {
+  e.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(
+      keys.filter(k => k.startsWith('ruya-atlasi-') && k !== CACHE_NAME)
+          .map(k => caches.delete(k))
+    );
+    await self.clients.claim();
+  })());
+});
+
+// Fetch: JSON ve HTML’ye network-first; statik varlıklara cache-first
+self.addEventListener('fetch', (e) => {
   const req = e.request;
-  if (req.method !== 'GET') return;
-  e.respondWith(
-    fetch(req).then(res => {
-      const copy = res.clone();
-      if (new URL(req.url).origin === self.location.origin) {
-        caches.open(STATIC_CACHE).then(c => c.put(req, copy));
-      }
-      return res;
-    }).catch(async () => {
-      const cached = await caches.match(req, { ignoreSearch: true });
-      return cached || caches.match('./offline.html');
-    })
-  );
-});
-const CACHE_VERSION='v6';
-const STATIC_CACHE=`ruya-static-${CACHE_VERSION}`;
-const ASSETS=[
-  './','./index.html','./manifest.json','./assets/css/style.css',
-  './content/ruyalar.html','./content/aktif-imgelem.html',
-  './content/sembol-dizini.html','./content/zaman-cizelgesi.html',
-  './assets/data/dreams.json','./assets/data/imagination.json','./offline.html'
-];
+  const url = new URL(req.url);
 
-self.addEventListener('install',e=>{
-  e.waitUntil(caches.open(STATIC_CACHE).then(c=>c.addAll(ASSETS)));
-  self.skipWaiting();
-});
-self.addEventListener('activate',e=>{
-  e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('ruya-static-')&&k!==STATIC_CACHE).map(k=>caches.delete(k)))));
-  self.clients.claim();
-});
-self.addEventListener('fetch',e=>{
-  if(e.request.method!=='GET')return;
-  e.respondWith(
-    fetch(e.request).then(res=>{
-      const copy=res.clone();
-      if(new URL(e.request.url).origin===self.location.origin){
-        caches.open(STATIC_CACHE).then(c=>c.put(e.request,copy));
+  // sadece kendi alanın
+  if (url.origin !== self.location.origin) return;
+
+  const isPage = req.destination === 'document' || req.headers.get('accept')?.includes('text/html');
+  const isData = url.pathname.endsWith('.json');
+  const isStatic = ['style', 'script', 'image', 'font'].includes(req.destination);
+
+  if (isPage || isData) {
+    // network-first
+    e.respondWith((async () => {
+      try {
+        const fresh = await fetch(req);
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(req, fresh.clone());
+        return fresh;
+      } catch {
+        const cached = await caches.match(req);
+        return cached || caches.match('/mandala/offline.html');
       }
-      return res;
-    }).catch(()=>caches.match(e.request,{ignoreSearch:true}).then(r=>r||caches.match('./offline.html')))
-  );
+    })());
+    return;
+  }
+
+  if (isStatic) {
+    // cache-first
+    e.respondWith((async () => {
+      const cached = await caches.match(req);
+      if (cached) return cached;
+      const fresh = await fetch(req);
+      const cache = await caches.open(CACHE_NAME);
+      cache.put(req, fresh.clone());
+      return fresh;
+    })());
+  }
 });
