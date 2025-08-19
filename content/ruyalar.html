@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="/mandala/">
+  <title>Rüyalar • Rüya Atlası</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .card{border:1px solid rgba(212,175,55,.25);border-radius:16px;background:rgba(250,246,240,.04);padding:16px}
+    .thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid rgba(212,175,55,.15);cursor:pointer}
+    .badge{display:inline-block;border:1px solid rgba(212,175,55,.3);border-radius:999px;padding:.2rem .55rem;margin:.1rem .2rem;color:#d4af37;font-size:.85rem}
+    /* lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:9999}
+    .lb img{max-width:min(92vw,1100px);max-height:88vh;border-radius:12px;border:1px solid rgba(212,175,55,.3)}
+  </style>
+</head>
+<body>
+  <nav><div class="nav-container">
+    <a class="nav-logo" href="index.html">☉ Rüya Atlası</a>
+    <ul class="nav-menu"><li><a href="atlas.html">Atlas</a></li><li><a href="content/sembol-dizini.html">Sembol Dizini</a></li><li><a href="content/zaman-cizelgesi.html">Zaman Çizelgesi</a></li></ul>
+  </div></nav>
+
+  <main class="container" style="padding-top:90px">
+    <h1>Rüyalar</h1>
+    <p class="subtitle">Seçili rüyalar; isimler gizlendi (ör. <b>S…</b>, <b>D…</b>, <b>Eşim Emine</b>).</p>
+
+    <div id="list" class="grid" aria-live="polite"></div>
+  </main>
+
+  <div id="lb" class="lb" role="dialog" aria-modal="true"><img alt=""><!-- click to close --></div>
+
+  <script>
+    const lb=document.getElementById('lb'); lb.addEventListener('click',()=>lb.style.display='none');
+    fetch('assets/data/dreams.json?v=6').then(r=>r.json()).then(items=>{
+      const cont=document.getElementById('list');
+      items.forEach(d=>{
+        const el=document.createElement('article'); el.className='card'; el.id=d.id;
+        el.innerHTML=`
+          ${d.thumb?`<img class="thumb" src="${d.thumb}" alt="${d.title}" data-full="${d.image||d.thumb}">`:''}
+          <h3>${d.title}</h3>
+          <div class="meta">${d.date} • ${d.location||''}</div>
+          <p>${d.text}</p>
+          <div>${d.tags.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
+          ${d.analysis?`<p style="margin-top:.75rem;opacity:.9"><i>${d.analysis}</i></p>`:''}
+        `;
+        cont.appendChild(el);
+      });
+      cont.querySelectorAll('.thumb').forEach(img=>{
+        img.addEventListener('click',()=>{lb.querySelector('img').src=img.dataset.full;lb.style.display='grid'})
+      });
+    });
+  </script>
+</body>
+</html>
