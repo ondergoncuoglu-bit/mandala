@@ -1,29 +1,65 @@
 [
   {
-    "id": "ai-001",
-    "title": "Çember 1 — Mavi Dalga",
-    "date": "2021-06-02",
+    "id": "ai-em-0",
+    "title": "EM-0 — İlk Çember",
+    "date": "2021-01-01",
     "series": "Çember Serisi",
-    "src": "assets/img/ai/cember-1-full.jpg",
-    "thumb": "assets/img/ai/cember-1-thumb.jpg",
-    "note": "Duygusal taşkınlık merkeze çekiliyor; dışta altın halka koruyucu sınır."
+    "src": "assets/img/ai/em-0.png",
+    "thumb": "assets/img/ai/em-0.png",
+    "note": "Başlangıç formu; merkeze doğru ilk odaklanma."
   },
   {
-    "id": "ai-002",
-    "title": "Eriha Kapısı",
-    "date": "2021-07-14",
-    "series": "Eriha",
-    "src": "assets/img/ai/eriha-gate-full.jpg",
-    "thumb": "assets/img/ai/eriha-gate-thumb.jpg",
-    "note": "Göz penceresi; eşik/kapı motifi yineleniyor."
+    "id": "ai-em-2-1",
+    "title": "EM-2.1 — İkinci Aşama",
+    "date": "2021-02-15",
+    "series": "Çember Serisi",
+    "src": "assets/img/ai/em-2-1.png",
+    "thumb": "assets/img/ai/em-2-1.png",
+    "note": "Dairesel akış belirginleşiyor; altın çerçeve yoğun."
   },
   {
-    "id": "ai-003",
-    "title": "Anka Mandalası",
-    "date": "2024-04-11",
+    "id": "ai-em-3",
+    "title": "EM-3 — Eşik",
+    "date": "2021-03-10",
+    "series": "Eşikler",
+    "src": "assets/img/ai/em-3.png",
+    "thumb": "assets/img/ai/em-3.png",
+    "note": "Eşik/kapı motifi; merkezle ilk temas."
+  },
+  {
+    "id": "ai-em-4",
+    "title": "EM-4 — Merkezlenme",
+    "date": "2021-04-07",
+    "series": "Merkez",
+    "src": "assets/img/ai/em-4.png",
+    "thumb": "assets/img/ai/em-4.png",
+    "note": "Yapı simetrikleşiyor; sabit bir çekirdek oluşuyor."
+  },
+  {
+    "id": "ai-em-4-6",
+    "title": "EM-4-6 — Derinleşme",
+    "date": "2021-05-21",
+    "series": "Merkez",
+    "src": "assets/img/ai/em-4-6.png",
+    "thumb": "assets/img/ai/em-4-6.png",
+    "note": "Renk katmanları arasında nefes alıp veren bir merkez."
+  },
+  {
+    "id": "ai-em-5",
+    "title": "EM-5 — Dönüşüm",
+    "date": "2022-01-18",
     "series": "Yeniden Doğuş",
-    "src": "assets/img/ai/anka-full.jpg",
-    "thumb": "assets/img/ai/anka-thumb.jpg",
+    "src": "assets/img/ai/em-5.png",
+    "thumb": "assets/img/ai/em-5.png",
     "note": "Nigredo sonrası yükselişin görsel kaydı."
+  },
+  {
+    "id": "ai-em-6",
+    "title": "EM-6 — Bütünleşme",
+    "date": "2023-06-09",
+    "series": "Bütünlük",
+    "src": "assets/img/ai/em-6.png",
+    "thumb": "assets/img/ai/em-6.png",
+    "note": "Çatışkıların birlikte tutulduğu olgun merkez."
   }
 ]
