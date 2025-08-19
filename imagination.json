@@ -1,0 +1,11 @@
+[
+  { "id": "ai1", "title": "Kitap Çemberi", "description": "", "thumb": "assets/img/ai/Kitap_cember.png", "image": "assets/img/ai/Kitap_cember.png" },
+  { "id": "ai2", "title": "EM 0", "description": "", "thumb": "assets/img/ai/Kitap_EM-0.png", "image": "assets/img/ai/Kitap_EM-0.png" },
+  { "id": "ai3", "title": "EM 1.1", "description": "", "thumb": "assets/img/ai/Kitap_EM-1.1.png", "image": "assets/img/ai/Kitap_EM-1.1.png" },
+  { "id": "ai4", "title": "EM 2.1", "description": "", "thumb": "assets/img/ai/Kitap_EM-2.1.png", "image": "assets/img/ai/Kitap_EM-2.1.png" },
+  { "id": "ai5", "title": "EM 3", "description": "", "thumb": "assets/img/ai/Kitap_EM-3.png", "image": "assets/img/ai/Kitap_EM-3.png" },
+  { "id": "ai6", "title": "EM 4", "description": "", "thumb": "assets/img/ai/Kitap_EM-4.png", "image": "assets/img/ai/Kitap_EM-4.png" },
+  { "id": "ai7", "title": "EM 4-6", "description": "", "thumb": "assets/img/ai/Kitap_EM-4-6.png", "image": "assets/img/ai/Kitap_EM-4-6.png" },
+  { "id": "ai8", "title": "EM 5", "description": "", "thumb": "assets/img/ai/Kitap_EM-5.png", "image": "assets/img/ai/Kitap_EM-5.png" },
+  { "id": "ai9", "title": "EM 6", "description": "", "thumb": "assets/img/ai/Kitap_EM-6.png", "image": "assets/img/ai/Kitap_EM-6.png" }
+]
