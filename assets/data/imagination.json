@@ -1,0 +1,29 @@
+[
+  {
+    "id": "ai-001",
+    "title": "Çember 1 — Mavi Dalga",
+    "date": "2021-06-02",
+    "series": "Çember Serisi",
+    "src": "assets/img/ai/cember-1-full.jpg",
+    "thumb": "assets/img/ai/cember-1-thumb.jpg",
+    "note": "Duygusal taşkınlık merkeze çekiliyor; dışta altın halka koruyucu sınır."
+  },
+  {
+    "id": "ai-002",
+    "title": "Eriha Kapısı",
+    "date": "2021-07-14",
+    "series": "Eriha",
+    "src": "assets/img/ai/eriha-gate-full.jpg",
+    "thumb": "assets/img/ai/eriha-gate-thumb.jpg",
+    "note": "Göz penceresi; eşik/kapı motifi yineleniyor."
+  },
+  {
+    "id": "ai-003",
+    "title": "Anka Mandalası",
+    "date": "2024-04-11",
+    "series": "Yeniden Doğuş",
+    "src": "assets/img/ai/anka-full.jpg",
+    "thumb": "assets/img/ai/anka-thumb.jpg",
+    "note": "Nigredo sonrası yükselişin görsel kaydı."
+  }
+]
