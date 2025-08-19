@@ -3,87 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="16 Yıllık Jungyen Bireyleşme Yolculuğu - Rüya Atlası" />
-  <meta name="author" content="Önder" />
-
-  <!-- !!! ÖNEMLİ: GitHub Pages alt dizin düzeltmesi -->
+  <meta name="description" content="Rüya Atlası – Jungyen Bireyleşme Yolculuğu" />
   <base href="/mandala/">
 
-  <!-- Icons / PWA -->
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#1a1f3a" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Rüya Atlası" />
+  <title>Rüya Atlası</title>
 
-  <title>Rüya Atlası - Jungyen Bireyleşme Yolculuğu</title>
-
+  <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    :root{--color-dark-navy:#1a1f3a;--color-deep-blue:#2c3654;--color-gold:#d4af37;--color-light-gold:#f4e4c1;--color-cream:#faf6f0;--color-text:#e8e2d5;--color-text-dark:#3a3a3a;--font-serif:'Georgia','Times New Roman',serif;--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:var(--font-serif);line-height:1.6;color:var(--color-text);background:linear-gradient(135deg,var(--color-dark-navy) 0%,var(--color-deep-blue) 100%);min-height:100vh;overflow-x:hidden}
-    h1,h2,h3{font-weight:300;letter-spacing:.02em}
-    h1{font-size:clamp(2rem,5vw,3.5rem);color:var(--color-gold);text-align:center;margin-bottom:1rem}
-    h2{font-size:clamp(1.5rem,3vw,2.5rem);color:var(--color-light-gold);margin-bottom:1.5rem}
-    p{font-size:1.1rem;line-height:1.8;margin-bottom:1.5rem}
-
-    nav{position:fixed;top:0;width:100%;background:rgba(26,31,58,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-gold);z-index:1000;padding:1rem 0}
-    .nav-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center}
-    .nav-logo{font-size:1.5rem;color:var(--color-gold);text-decoration:none;display:flex;align-items:center;gap:.5rem}
-    .nav-menu{display:flex;list-style:none;gap:2rem}
-    .nav-menu a{color:var(--color-text);text-decoration:none;transition:color .3s;font-size:1rem}
-    .nav-menu a:hover{color:var(--color-gold)}
-    .menu-toggle{display:none;flex-direction:column;cursor:pointer}
-    .menu-toggle span{width:25px;height:2px;background:var(--color-gold);margin:3px 0}
-
-    .container{max-width:1200px;margin:0 auto;padding:6rem 2rem 2rem}
-    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-    .subtitle{font-size:1.3rem;color:var(--color-light-gold);text-align:center;margin-bottom:2rem;font-style:italic}
-
-    .mandala-container{position:relative;width:400px;height:400px;margin:3rem auto}
-    .mandala{position:absolute;inset:0}
-    .circle-outer,.circle-middle,.circle-inner{position:absolute;border-radius:50%;animation:rotate 60s linear infinite;border:2px solid var(--color-gold)}
-    .circle-outer{inset:0;border-width:3px}
-    .circle-middle{inset:15%;border-color:var(--color-light-gold);animation:rotrev 45s linear infinite}
-    .circle-inner{inset:30%;animation-duration:30s}
-    .circle-center{position:absolute;inset:42.5%;border-radius:50%;background:radial-gradient(circle,var(--color-gold) 0%,transparent 70%);animation:pulse 3s ease-in-out infinite}
-    @keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-    @keyframes rotrev{from{transform:rotate(360deg)}to{transform:rotate(0)}}
-    @keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
-
-    .content-section{background:rgba(250,246,240,.05);border-radius:20px;padding:3rem;margin:3rem 0;border:1px solid rgba(212,175,55,.2)}
-
-    .chapters-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}
-    .chapter-card{background:rgba(44,54,84,.5);border:1px solid var(--color-gold);border-radius:15px;padding:2rem;transition:all .3s;position:relative;overflow:hidden;text-decoration:none;color:inherit}
-    .chapter-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(212,175,55,.1),transparent 70%);opacity:0;transition:opacity .3s}
-    .chapter-card:hover::before{opacity:1}
-    .chapter-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(212,175,55,.2)}
-    .chapter-number{font-size:.9rem;color:var(--color-gold);margin-bottom:.5rem}
-    .chapter-title{font-size:1.5rem;color:var(--color-light-gold);margin-bottom:1rem}
-    .chapter-excerpt{opacity:.9}
-
-    .download-section{text-align:center;padding:3rem 0}
-    .download-buttons{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
-    .download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2rem;background:linear-gradient(135deg,var(--color-gold),var(--color-light-gold));color:var(--color-dark-navy);text-decoration:none;border-radius:50px;font-weight:600;transition:all .3s}
-    .download-btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(212,175,55,.3)}
-
-    footer{text-align:center;padding:3rem 0;border-top:1px solid rgba(212,175,55,.2);margin-top:5rem}
-    .footer-text{opacity:.7}
-
-    @media (max-width:768px){
-      .nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background:rgba(26,31,58,.98);width:100%;text-align:center;transition:.3s;padding:2rem 0}
-      .nav-menu.active{left:0}
-      .menu-toggle{display:flex}
-      .mandala-container{width:300px;height:300px}
-      .content-section{padding:2rem 1.5rem}
-    }
+    /* sayfaya özgü ufak ekler */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{border:1px solid rgba(212,175,55,.25);border-radius:16px;background:rgba(250,246,240,.04);padding:16px}
+    .card h3{color:#f4e4c1;margin:.25rem 0 .5rem}
+    .card .meta{opacity:.75;font-size:.95rem;margin-bottom:.75rem}
+    .thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid rgba(212,175,55,.15)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .btn{padding:.65rem 1rem;border-radius:12px;border:1px solid rgba(212,175,55,.35);text-decoration:none;color:#d4af37}
+    .btn:hover{background:rgba(212,175,55,.08)}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:12px}
+    .section-head h2{margin:0}
   </style>
 </head>
 <body>
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav>
     <div class="nav-container">
       <a class="nav-logo" href="index.html"><span style="font-size:1.8rem">☉</span>Rüya Atlası</a>
@@ -93,8 +39,8 @@
         <li><a href="atlas.html">Atlas</a></li>
         <li><a href="content/sembol-dizini.html">Sembol Dizini</a></li>
         <li><a href="content/zaman-cizelgesi.html">Zaman Çizelgesi</a></li>
-        <li><a href="#pdf">PDF</a></li>
-        <li><a href="#docx">DOCX</a></li>
+        <li><a href="content/ruyalar.html">Rüyalar</a></li>
+        <li><a href="content/aktif-imgelem.html">Aktif İmgelem</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
     </div>
@@ -116,63 +62,89 @@
       </div>
 
       <div class="content-section">
-        <p>"Kim içe bakarsa uyanır." — Carl Gustav Jung</p>
-        <p>Bu kitap, 2009–2025 arası 16 yıllık bir içsel yolculuğun kaydıdır. 190 rüya, 7 aktif imgelem seansı ve sayısız eşzamanlılık üzerinden bireyleşme izlenir.</p>
+        <p>"Kim içe bakarsa uyanır." — C. G. Jung</p>
+        <p>190+ rüya, aktif imgelem seansları ve eşzamanlılıklarla örülmüş bir içsel harita.</p>
       </div>
     </div>
   </section>
 
-  <!-- CHAPTERS -->
+  <!-- BÖLÜMLER -->
   <section class="container" id="bolumler">
     <h2>Kitap Bölümleri</h2>
     <div class="chapters-grid">
-      <a class="chapter-card" href="content/bolum-1.html">
-        <div class="chapter-number">Bölüm I</div>
-        <h3 class="chapter-title">Persona ve Maskeler</h3>
-        <p class="chapter-excerpt">2009–2010: Toplumsal rollerin inşası, ilk gölge teması…</p>
-      </a>
-      <a class="chapter-card" href="content/bolum-2.html">
-        <div class="chapter-number">Bölüm II</div>
-        <h3 class="chapter-title">Karanlık Gecenin Ruhu</h3>
-        <p class="chapter-excerpt">2011–2015: Gölge yoğunlaşır, iniş rüyaları, eşikler…</p>
-      </a>
-      <a class="chapter-card" href="content/bolum-3.html">
-        <div class="chapter-number">Bölüm III</div>
-        <h3 class="chapter-title">Anima ile Dans</h3>
-        <p class="chapter-excerpt">2016–2020: İçsel dişille buluşma, yaratıcı enerji, lucid rüyalar…</p>
-      </a>
-      <a class="chapter-card" href="assets/pdfs/ruya-atlasi.pdf" target="_blank">
-        <div class="chapter-number">Ek</div>
-        <h3 class="chapter-title">Semboller Sözlüğü (PDF)</h3>
-        <p class="chapter-excerpt">Jungyen semboller ve kişisel yankılar.</p>
-      </a>
+      <a class="chapter-card" href="content/bolum-1.html"><div class="chapter-number">I</div><h3 class="chapter-title">Persona ve Maskeler</h3><p class="chapter-excerpt">İlk gölge teması, roller…</p></a>
+      <a class="chapter-card" href="content/bolum-2.html"><div class="chapter-number">II</div><h3 class="chapter-title">Karanlık Gecenin Ruhu</h3><p class="chapter-excerpt">İniş, çözülme, eşikler…</p></a>
+      <a class="chapter-card" href="content/bolum-3.html"><div class="chapter-number">III</div><h3 class="chapter-title">Anima ile Dans</h3><p class="chapter-excerpt">İçsel dişil, yaratım…</p></a>
+      <a class="chapter-card" href="atlas.html"><div class="chapter-number">IV</div><h3 class="chapter-title">Çember & Mandala</h3><p class="chapter-excerpt">Bütünleşmeye giden merkez…</p></a>
     </div>
   </section>
 
-  <!-- DOWNLOADS -->
+  <!-- SON 6 RÜYA ÖZETİ -->
+  <section class="container">
+    <div class="section-head">
+      <h2>Son Rüyalar</h2>
+      <a class="btn" href="content/ruyalar.html">Tümünü Gör</a>
+    </div>
+    <div id="dream-list" class="grid" aria-live="polite"></div>
+  </section>
+
+  <!-- SON 6 AKTİF İMGELEM GÖRSELİ -->
+  <section class="container">
+    <div class="section-head">
+      <h2>Aktif İmgelem Galerisi</h2>
+      <a class="btn" href="content/aktif-imgelem.html">Galeri</a>
+    </div>
+    <div id="ai-list" class="grid" aria-live="polite"></div>
+  </section>
+
+  <!-- İNDİR -->
   <section class="container download-section" id="pdf">
     <h2>Kitabı İndir</h2>
-    <p class="subtitle">Tam metni farklı formatlarda indirebilirsiniz</p>
+    <p class="subtitle">PDF / DOCX tam metin</p>
     <div class="download-buttons">
-      <a href="assets/pdfs/ruya-atlasi.pdf" class="download-btn"><span>📕</span> PDF İndir</a>
-      <a href="assets/docs/ruya-atlasi.docx" class="download-btn" id="docx"><span>📘</span> DOCX İndir</a>
+      <a href="assets/pdfs/ruya-atlasi.pdf" class="download-btn"><span>📕</span>PDF</a>
+      <a href="assets/docs/ruya-atlasi.docx" class="download-btn"><span>📘</span>DOCX</a>
     </div>
   </section>
 
-  <footer>
-    <div class="container"><p class="footer-text">© 2025 Rüya Atlası — Jungyen Bireyleşme Yolculuğu <!-- build v5 --></p></div>
-  </footer>
+  <footer><div class="container"><p class="footer-text">© 2025 Rüya Atlası • sürüm v6</p></div></footer>
 
   <script>
-    const menuToggle=document.getElementById('menuToggle');
-    const navMenu=document.getElementById('navMenu');
+    // menü
+    const menuToggle=document.getElementById('menuToggle'), navMenu=document.getElementById('navMenu');
     if(menuToggle&&navMenu){menuToggle.addEventListener('click',()=>navMenu.classList.toggle('active'))}
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href'); if(id&&id.length>1){const t=document.querySelector(id);
-          if(t){e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); navMenu&&navMenu.classList.remove('active');}}
+
+    // son 6 rüya
+    fetch('assets/data/dreams.json?v=6').then(r=>r.json()).then(data=>{
+      const ul=document.getElementById('dream-list');
+      (data.slice(0,6)).forEach(d=>{
+        const a=document.createElement('a');
+        a.href=`content/ruyalar.html#${d.id}`;
+        a.className='card'; a.innerHTML=`
+          ${d.thumb?`<img class="thumb" src="${d.thumb}" alt="${d.title}">`:''}
+          <h3>${d.title}</h3>
+          <div class="meta">${d.date} • ${d.tags.join(', ')}</div>
+          <p>${d.excerpt}</p>`;
+        ul.appendChild(a);
       });
-    });
+    }).catch(()=>{document.getElementById('dream-list').innerHTML='<p>Rüyalar yüklenemedi.</p>'});
+
+    // son 6 aktif imgelem görseli
+    fetch('assets/data/imagination.json?v=6').then(r=>r.json()).then(data=>{
+      const ul=document.getElementById('ai-list');
+      (data.slice(0,6)).forEach(x=>{
+        const a=document.createElement('a');
+        a.href=`content/aktif-imgelem.html#${x.id}`;
+        a.className='card'; a.innerHTML=`
+          <img class="thumb" src="${x.thumb||x.src}" alt="${x.title}">
+          <h3>${x.title}</h3>
+          <div class="meta">${x.date} • ${x.series||''}</div>
+          <p>${x.note||''}</p>`;
+        ul.appendChild(a);
+      });
+    }).catch(()=>{document.getElementById('ai-list').innerHTML='<p>Galeri yüklenemedi.</p>'});
+
+    // PWA
     if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{});}
   </script>
 </body>
